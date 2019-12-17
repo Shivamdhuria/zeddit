@@ -22,10 +22,10 @@
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_emailFragment"
-            app:destination="@id/emailFragment" />
+            app:destination="@id/detailPostFragment" />
     </fragment>
     <fragment
-        android:id="@+id/emailFragment"
+        android:id="@+id/detailPostFragment"
         android:name="com.example.zeddit.Post.DetailPostFragment"
         android:label="EmailFragment">
         <argument

@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.zeddit.R
 
 /**
- * A simple [Fragment] subclass.
+ * A simple [Fragment] subclass for opening up a detailed post.
  */
 class DetailPostFragment : Fragment() {
 

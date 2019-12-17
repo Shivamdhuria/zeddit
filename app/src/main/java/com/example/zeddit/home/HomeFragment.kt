@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.example.zeddit.R
 
 /**
- * A simple [Fragment] subclass.
+ * A simple [Fragment] subclas for displaying list of posts.
  */
 class HomeFragment : Fragment() {
 
