@@ -1,18 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:id="@+id/coordinator_layout"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"/>
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="MAIN ACTVITY"
+        android:textAlignment="center"
+        />
+
+<!--    <fragment-->
+<!--        android:id="@+id/bottom_nav_drawer"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:name="com.materialstudies.reply.ui.nav.BottomNavDrawerFragment"/>-->
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabAlignmentMode="center"
+        app:hideOnScroll="true">
+
+        <LinearLayout
+            android:id="@+id/bottom_app_bar_content_container"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/min_touch_target_size"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/bottom_app_bar_chevron"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                app:tint="?attr/colorOnPrimarySurface"
+               />
+
+            <ImageView
+                android:id="@+id/bottom_app_bar_logo"
+                android:layout_width="@dimen/bottom_app_bar_logo_size"
+                android:layout_height="@dimen/bottom_app_bar_logo_size"
+
+                android:layout_gravity="center_vertical" />
+
+            <TextView
+                android:id="@+id/bottom_app_bar_title"
+                android:textAppearance="?attr/textAppearanceBody1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+
+                android:textColor="?attr/colorControlNormal"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_anchor="@id/bottom_app_bar"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
