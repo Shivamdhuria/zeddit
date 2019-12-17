@@ -10,6 +10,7 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:navGraph="@navigation/navigation_graph"
         app:defaultNavHost="true"/>
     <TextView
         android:layout_width="match_parent"
@@ -71,6 +72,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        app:srcCompat="@drawable/asl_edit_reply"
         app:layout_anchor="@id/bottom_app_bar"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
