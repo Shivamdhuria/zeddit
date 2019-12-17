@@ -27,7 +27,7 @@
 
         <item name="android:colorBackground">@color/reply_blue_50</item>
         <item name="colorSurface">@color/reply_white_50</item>
-<!--        <item name="colorPrimarySurfaceVariant">?attr/colorPrimaryVariant</item>-->
+
         <item name="colorError">@color/reply_red_400</item>
 
         <item name="colorOnPrimary">@color/reply_white_50</item>
