@@ -10,7 +10,6 @@ internal class HomeModule {
     @Provides
     internal fun providesApi(retrofit: Retrofit): HomeApi = retrofit.create(HomeApi::class.java)
 
-
     @Provides
     internal fun providesRepository(api: HomeApi): HomeRepository = HomeRemoteRepository(api)
 }
