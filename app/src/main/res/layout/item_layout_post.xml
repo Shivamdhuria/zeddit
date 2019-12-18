@@ -31,8 +31,6 @@
             android:elevation="@dimen/plane_00"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="@{(view) -> listener.onEmailClicked(view, email)}"
-            android:onLongClick="@{(view) -> listener.onEmailLongPressed(email)}"
             app:cardPreventCornerOverlap="false"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.Reply.MediumComponent.Marked"
             android:transitionName="@{@string/email_card_transition_name(email.id)}">
@@ -49,7 +47,6 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:maxLines="1"
-                    android:text="@{email.senderPreview}"
                     tools:text="Google Express - 12m"
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +58,6 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?attr/textAppearanceHeadline5"
                     android:maxLines="1"
-                    android:text="@{email.subject}"
                     tools:text="Package Shipped!"
                     app:layout_constraintEnd_toStartOf="@+id/sender_profile_image_view"
                     app:layout_constraintStart_toStartOf="parent"
@@ -72,9 +68,7 @@
                     android:id="@+id/body_preview_text_view"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:text="@{email.body}"
                     tools:text="Cucumber mask facial has shipped. It'll be on your front door by the end of the week!"
-                    app:goneIf="@{!email.hasBody}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/subject_text_view"/>
@@ -82,6 +76,7 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/attachment_recycler_view"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/body_preview_text_view"
@@ -89,7 +84,6 @@
                     android:paddingEnd="12dp"
                     android:clipToPadding="false"
                     android:overScrollMode="never"
-                    app:goneIf="@{!email.hasAttachments}"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     android:orientation="horizontal" />
 
