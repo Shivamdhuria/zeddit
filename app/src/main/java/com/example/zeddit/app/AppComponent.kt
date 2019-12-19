@@ -1,5 +1,6 @@
 package com.example.zeddit.app
 
+import com.example.zeddit.home.HomeActivityBuilderModule
 import dagger.Component
 import dagger.android.AndroidInjectionModule
 import dagger.android.AndroidInjector
@@ -12,7 +13,8 @@ import javax.inject.Singleton
         AndroidInjectionModule::class,
         AndroidSupportInjectionModule::class,
         AppModule::class,
-        AppBuilderModule::class]
+        AppBuilderModule::class,
+        HomeActivityBuilderModule::class]
 )
 internal interface AppComponent : AndroidInjector<ZedditApplication> {
 

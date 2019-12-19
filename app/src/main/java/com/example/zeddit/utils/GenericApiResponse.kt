@@ -28,6 +28,7 @@ sealed class GenericApiResponse<T> {
             Log.d(TAG, "GenericApiResponse: message: ${response.message()}")
 
             if(response.isSuccessful){
+
                 val body = response.body()
                 return if (body == null || response.code() == 204) {
                     ApiEmptyResponse()

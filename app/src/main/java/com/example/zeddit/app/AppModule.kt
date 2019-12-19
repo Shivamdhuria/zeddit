@@ -4,11 +4,14 @@ import com.example.zeddit.BuildConfig
 import com.example.zeddit.app.AppConstant.REDDIT_BASE_URL
 import com.example.zeddit.utils.AuthenticationInterceptor
 import com.example.zeddit.utils.LiveDataCallAdapterFactory
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
@@ -19,15 +22,21 @@ internal class AppModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(client: OkHttpClient): Retrofit = retrofitConfiguration(client)
+    fun provideRetrofit(client: OkHttpClient, gsonBuilder: Gson): Retrofit = retrofitConfiguration(client, gsonBuilder)
 
-    private fun retrofitConfiguration(client: OkHttpClient): Retrofit {
+    private fun retrofitConfiguration(client: OkHttpClient, gsonBuilder: Gson): Retrofit {
         return Retrofit.Builder()
             .baseUrl(REDDIT_BASE_URL)
             .client(client)
-            .addConverterFactory(MoshiConverterFactory.create().asLenient())
+            .addConverterFactory(GsonConverterFactory.create(gsonBuilder))
             .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideGsonBuilder(): Gson {
+        return GsonBuilder().excludeFieldsWithoutExposeAnnotation().create()
     }
 
     @Provides

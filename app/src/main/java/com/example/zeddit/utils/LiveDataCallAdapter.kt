@@ -1,5 +1,6 @@
 package com.example.zeddit.utils
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import retrofit2.Call
 import retrofit2.CallAdapter
@@ -21,10 +22,12 @@ class LiveDataCallAdapter<R>(private val responseType: Type) :
                 if (started.compareAndSet(false, true)) {
                     call.enqueue(object : Callback<R> {
                         override fun onResponse(call: Call<R>, response: Response<R>) {
+                            Log.e("Live Data Call Adapter", response.toString())
                             postValue(GenericApiResponse.create(response))
                         }
 
                         override fun onFailure(call: Call<R>, throwable: Throwable) {
+                            Log.e("Live Data Call Adapter", throwable.toString())
                             postValue(GenericApiResponse.create(throwable))
                         }
                     })
